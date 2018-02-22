@@ -469,6 +469,8 @@ namespace Enki
 		
 		//! All the objects in the world
 		Objects objects;
+		//! Render world objects
+        void renderObjects(void);
 		//! Base for the Bluetooth connections between robots
 		BluetoothBase* bluetoothBase;
 

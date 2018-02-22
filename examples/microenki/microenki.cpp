@@ -1,5 +1,5 @@
 #include <enki/PhysicalEngine.h>
-#include <enki/robots/e-puck/EPuck.h>
+#include <enki/robots/thymio2/Thymio2.h>
 #include <iostream>
 
 int main(int argc, char *argv[])
@@ -8,13 +8,13 @@ int main(int argc, char *argv[])
 	Enki::World world(200, 200);
 	
 	// Create a Khepera and position it
-	Enki::EPuck *ePuck = new Enki::EPuck;
-	ePuck->pos = Enki::Point(100, 100);
-	ePuck->leftSpeed = 30;
-	ePuck->rightSpeed = 20;
+	Enki::Thymio2 *thymio = new Enki::Thymio2;
+	thymio->pos = Enki::Point(100, 100);
+	thymio->leftSpeed = 30;
+	thymio->rightSpeed = 20;
 	
 	// objects are garbage collected by the world on destruction
-	world.addObject(ePuck);
+	world.addObject(thymio);
 	
 	Enki::Polygon p;
 	const double amount = 9;
@@ -30,10 +30,11 @@ int main(int argc, char *argv[])
 	world.addObject(o);
 	
 	// Run for some times
-	for (unsigned i=0; i<10; i++)
+	for (unsigned t=0; t<10; t++)
 	{
+        world.renderObjects();
+		//std::cout << "At time " << t << " thymio pos is (" << thymio->pos.x << "," << thymio->pos.y << ")" << std::endl;
 		world.step(0.1, 100);
-		std::cout << "E-puck pos is (" << ePuck->pos.x << "," << ePuck->pos.y << ")" << std::endl;
 	}
 }
 

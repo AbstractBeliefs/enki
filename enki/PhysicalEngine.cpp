@@ -936,6 +936,15 @@ namespace Enki
 			// TODO: verify this code
 		}
 	}
+    
+    void World::renderObjects(void){
+        for (ObjectsIterator i = objects.begin(); i != objects.end(); ++i){
+			std::cout << (*i)->pos << std::endl;
+			//Enki::Polygon currhull = (*i)->getHull().getConvexHull();
+			//std::cout << currhull << std::endl;
+		}
+		return;
+	}
 
 	void World::collideObjects(PhysicalObject *object1, PhysicalObject *object2)
 	{
